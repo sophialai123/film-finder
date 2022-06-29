@@ -16,7 +16,7 @@ const getGenres = async () => {
       //neet to use await keyword 
       const jsonResponse = await response.json();
       const genresArray = jsonResponse.genres;
-      console.log(genresArray)
+      //console.log(genresArray)
       return genresArray
     } else {
       throw new Error(error)
@@ -44,7 +44,7 @@ const getMovies = async () => {
     if (response.ok) {
       const jsonResponse = await response.json();
       const moviesResults = jsonResponse.results;
-      console.log(moviesResults)
+      //console.log(moviesResults)
       return moviesResults;
     } else {
       throw new Error(error)
@@ -65,13 +65,12 @@ const getMovieInfo = async (movie) => {
   // const movieEndpoint = `/movie/5`; // pass an movie id 
   const requestParams = `?api_key=${tmdbKey}`;
   const urlToFetch = `${tmdbBaseUrl}${movieEndpoint}${requestParams}`;
-  console.log(urlToFetch)
   try {
     const response = await fetch(urlToFetch);
     if (response.ok) {
       const jsonResponse = await response.json();
       const movieInfo = jsonResponse;
-      console.log(jsonResponse);
+      //console.log(jsonResponse);
       return movieInfo;
     } else {
       throw new Error(error)
@@ -97,9 +96,11 @@ const showRandomMovie = async () => {
 
   //call getMovies function and await its return,
   const movies = await getMovies();
+  //console.log(movies);
 
   //helper function defined in helpers.js
   const randomMovie = getRandomMovie(movies);
+  //console.log(randomMovie)
 
   const info = await getMovieInfo(randomMovie)
 

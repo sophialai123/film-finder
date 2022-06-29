@@ -69,12 +69,17 @@ img#moviePoster {
 }
 
 #movieTitle,
-#movieOverview {
+#movieOverview,
+#movieRating {
   padding: 32px;
   font-size: 22px;
   line-height: 1.8;
+  color: #FEFBEA;
 }
 
+#movieRating {
+  float: left;
+}
 
 #playBtn {
   margin-top: 20px;

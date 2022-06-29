@@ -26,8 +26,10 @@ const showBtns = () => {
 const clearCurrentMovie = () => {
   const moviePosterDiv = document.getElementById('moviePoster');
   const movieTextDiv = document.getElementById('movieText');
+  const movieRatingDiv = document.getElementById('movieRating');
   moviePosterDiv.innerHTML = '';
   movieTextDiv.innerHTML = '';
+  movieRatingDiv.innerHTML = '';
 }
 
 // After liking a movie, clears the current movie from the screen and gets another random movie
@@ -71,7 +73,19 @@ const createMovieOverview = (overview) => {
   return overviewParagraph;
 };
 
+
+//Create HTML for movie rating
+const createMovieRating = (vote_average) => {
+  const averageRating = document.createElement('p');
+  averageRating.setAttribute('id', 'movieRating');
+  averageRating.innerHTML = `Average Rating :  ${vote_average}/10`;
+
+  //console.log(averageRating)
+  return averageRating;
+}
+
 // Returns a random movie from the first page of movies
+let moviesArray = [];
 const getRandomMovie = (movies) => {
   const randomIndex = Math.floor(Math.random() * movies.length);
   const randomMovie = movies[randomIndex];
@@ -82,18 +96,23 @@ const getRandomMovie = (movies) => {
 const displayMovie = (movieInfo) => {
   const moviePosterDiv = document.getElementById('moviePoster');
   const movieTextDiv = document.getElementById('movieText');
+  const movieRatingDiv = document.getElementById('movieRating');
   const likeBtn = document.getElementById('likeBtn');
   const dislikeBtn = document.getElementById('dislikeBtn');
+
+
 
   // Create HTML content containing movie info
   const moviePoster = createMoviePoster(movieInfo.poster_path);
   const titleHeader = createMovieTitle(movieInfo.title);
   const overviewText = createMovieOverview(movieInfo.overview);
+  const movieRating = createMovieRating(movieInfo.vote_average);
 
   // Append title, poster, and overview to page
   moviePosterDiv.appendChild(moviePoster);
   movieTextDiv.appendChild(titleHeader);
   movieTextDiv.appendChild(overviewText);
+  movieRatingDiv.appendChild(movieRating);
 
   showBtns();
   likeBtn.onclick = likeMovie;
