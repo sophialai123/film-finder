@@ -107,7 +107,11 @@ select {
 
 #likeOrDislikeBtns {
   text-align: center;
-  margin: 0px auto;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
 }
 
 #likeBtn,
